@@ -61,17 +61,14 @@ public class AppRecipeRepository implements RecipeRepository {
         }
         System.out.println("\n---------------");
     }
-        @Override
+    @Override
     public void deleteRecipe() {
         if (recipes.isEmpty()) {
             System.out.println("Немає таких рецептів. т_т");
             return;
         }
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Введіть назву рецепту для видалення:");
         String name = scanner.nextLine();
-
         boolean removed = false;
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(name)) {
@@ -105,7 +102,6 @@ public class AppRecipeRepository implements RecipeRepository {
                 break;
             }
         }
-
         if (recipeToEdit != null) {
             System.out.println("Обраний рецепт:");
             System.out.println("Назва: " + recipeToEdit.getName());
@@ -113,18 +109,15 @@ public class AppRecipeRepository implements RecipeRepository {
             System.out.println("Метод приготування: " + recipeToEdit.getMethod());
             System.out.println("Посилання на ютуб: "+recipeToEdit.getGuide());
             System.out.println();
-
-            System.out.println("Введіть назву рецепту (або натисніть Enter, щоб залишити без змін):");
+            System.out.println("Введіть нову назву рецепту або нічого):");
             String newName = scanner.nextLine();
-
-            System.out.println("Введіть нові інгредієнти (через кому) або натисніть Enter, щоб залишити без змін:");
+            System.out.println("Введіть нові інгредієнти або нічого:");
             String newIngredientsInput = scanner.nextLine();
             List<String> newIngredients = recipeToEdit.getIngredients();
             if (!newIngredientsInput.isEmpty()) {
                 String[] newIngredientsArray = newIngredientsInput.split(",");
                 newIngredients = List.of(newIngredientsArray);
             }
-
             List<MethodOC> newMethod = recipeToEdit.getMethod();
             boolean editingMethod = true;
             while (editingMethod) {
@@ -143,6 +136,9 @@ public class AppRecipeRepository implements RecipeRepository {
             if (!newName.isEmpty()) {
                 recipeToEdit.setName(newName);
             }
+            System.out.println("Введіть нове посилання або нічого:");
+            String newGuide = scanner.nextLine();
+            recipeToEdit.setGuide(newGuide);
             recipeToEdit.setIngredients(newIngredients);
             recipeToEdit.setMethod(newMethod);
 
@@ -157,8 +153,6 @@ public class AppRecipeRepository implements RecipeRepository {
             System.out.println("Немає таких рецептів. т_т");
             return;
         }
-
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введіть назву рецепту для пошуку:");
         String name = scanner.nextLine();
@@ -178,10 +172,10 @@ public class AppRecipeRepository implements RecipeRepository {
                             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                                 Desktop.getDesktop().browse(uri);
                             } else {
-                                System.out.println("Гіперпосилання не підтримуються на даній платформі.");
+                                System.out.println("неправилне гіперпосилання.");
                             }
                         } catch (Exception e) {
-                            System.out.println("Сталася помилка при відкритті гіперпосилання: " + e.getMessage());
+                            System.out.println("Сталася помилка: " + e.getMessage());
                         }
                         break;
                     default:
@@ -196,30 +190,12 @@ public class AppRecipeRepository implements RecipeRepository {
         }
 
     }
-    @Override
-    public void saveRecipe() {
-        gsonConverter.writeJson(recipes, filePath);
-        System.out.println("Збережено ");
-    }
-    @Override
-    public void exitWithoutSaving() {
-        System.out.println("Завершено...");
-    }
-    private void loadRecipes() {
-        try {
-            String json = new String(Files.readAllBytes(Paths.get(filePath)));
-            recipes = gsonConverter.fromJson(json);
-        } catch (IOException e) {
-            System.out.println("Помилка");
-        }
-    }
-
     public void searchByIngredient() {
         if (recipes.isEmpty()) {
             System.out.println("Немає таких рецептів.");
             return;
         }
-        System.out.println("Введіть інгредієнти для пошуку (через кому):");
+        System.out.println("Введіть інгредієнти для пошуку :");
         String ingredientsInput = scanner.nextLine();
         String[] ingredientsArray = ingredientsInput.split(",");
         List<String> searchIngredients = List.of(ingredientsArray);
@@ -228,7 +204,6 @@ public class AppRecipeRepository implements RecipeRepository {
 
         for (Recipe recipe : recipes) {
             List<String> recipeIngredients = recipe.getIngredients();
-
             if (recipeIngredients.containsAll(searchIngredients)) {
                 foundRecipes.add(recipe);
             }
@@ -242,11 +217,43 @@ public class AppRecipeRepository implements RecipeRepository {
                 System.out.println("Назва: " + recipe.getName());
                 System.out.println("Інгредієнти: " + recipe.getIngredients());
                 System.out.println("Метод приготування: " + recipe.getMethod());
+                System.out.println("watch on youtube?");
+                String yt = scanner.next();
+                switch (yt){
+                    case "yes":
+                        try {
+                            URI uri = new URI(recipe.getGuide());
+                            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                                Desktop.getDesktop().browse(uri);
+                            } else {
+                                System.out.println("неправилне гіперпосилання.");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Сталася помилка п: " + e.getMessage());
+                        }
+                        break;
+                    default:
+                        break;
+                }
                 System.out.println();
             }
         }
     }
-
-
-
+    @Override
+    public void saveRecipe() {
+        gsonConverter.writeJson(recipes, filePath);
+        System.out.println("Збережено ");
+    }
+    private void loadRecipes() {
+        try {
+            String json = new String(Files.readAllBytes(Paths.get(filePath)));
+            recipes = gsonConverter.fromJson(json);
+        } catch (IOException e) {
+            System.out.println("Помилка");
+        }
+    }
+    @Override
+    public void exit() {
+        System.out.println("Завершено...");
+    }
 }

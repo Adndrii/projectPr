@@ -13,20 +13,17 @@ public class GsonConverter implements JsonConverter {
     public GsonConverter() {
         gson = new Gson();
     }
-
+    @Override
+    public List<Recipe> fromJson(String json) {//deserialization
+        Type listType = new TypeToken<ArrayList<Recipe>>() {}.getType();
+        return gson.fromJson(json, listType);
+    }
     @Override
     public String toJson(List<Recipe> records) {
         return gson.toJson(records);
     }
-
     @Override
-    public List<Recipe> fromJson(String json) {
-        Type listType = new TypeToken<ArrayList<Recipe>>() {}.getType();
-        return gson.fromJson(json, listType);
-    }
-
-    @Override
-    public void writeJson(List<Recipe> records, String filePath) {
+    public void writeJson(List<Recipe> records, String filePath) {//deserialization
         String json = toJson(records);
 
         try (FileWriter fileWriter = new FileWriter(filePath)) {

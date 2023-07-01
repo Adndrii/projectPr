@@ -17,28 +17,21 @@ public class Recipe {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public List<String> getIngredients() {
         return ingredients;
     }
-
-    public void setIngredients(List<String> ingredients) {
-        this.ingredients = ingredients;
-    }
-
     public List<MethodOC> getMethod() {
         return method;
     }
-
+    public String getGuide(){return guide;}
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }
     public void setMethod(List<MethodOC> method) {
         this.method = method;
     }
-
-    public String getGuide(){return guide;}
-
     public void setGuide(String guide){this.guide=guide;}
 }

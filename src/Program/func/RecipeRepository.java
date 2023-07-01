@@ -7,7 +7,7 @@ public interface RecipeRepository {
     void editRecipe();
     void searchRecipe();
     void saveRecipe();
-    void exitWithoutSaving();
+    void exit();
     void searchByIngredient();
 }
 

@@ -36,7 +36,7 @@ public class Main {
                     repository.saveRecipe();
                     break;
                 case "exit":
-                    repository.exitWithoutSaving();
+                    repository.exit();
                     System.exit(0);
                     break;
                 default:
