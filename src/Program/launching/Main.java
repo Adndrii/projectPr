@@ -28,7 +28,7 @@ public class Main {
                     repository.searchRecipe();
                     break;
                 case "save":
-                    repository.saveAndExit();
+                    repository.save();
                     break;
                 case "exit":
                     repository.exitWithoutSaving();

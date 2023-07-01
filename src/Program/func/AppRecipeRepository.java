@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class AppRecipeRepository implements RecipeRepository {
     private List<Recipe> recipes;
     private final GsonConverter gsonConverter;
-
     public AppRecipeRepository() {
         recipes = new ArrayList<>();
         gsonConverter = new GsonConverter();
@@ -23,7 +22,7 @@ public class AppRecipeRepository implements RecipeRepository {
         System.out.println("Введіть назву рецепту:");
         String name = scanner.nextLine();
 
-        System.out.println("Введіть інгредієнти (через кому):");
+        System.out.println("Введіть інгредієнти:");
         String ingredientsInput = scanner.nextLine();
         String[] ingredientsArray = ingredientsInput.split(",");
         List<String> ingredients = List.of(ingredientsArray);
@@ -31,7 +30,7 @@ public class AppRecipeRepository implements RecipeRepository {
         List<MethodOC> method = new ArrayList<>();
         boolean addingMethod = true;
         while (addingMethod) {
-            System.out.println("Введіть метод приготування (FRIED, BOILED, FROZEN, BAKED, STEWED) або введіть 'done', щоб завершити:");
+            System.out.println("Введіть метод приготування (fry, boil, freeze, bake, stew),i введіть 'done':");
             String methodInput = scanner.nextLine();
             if (methodInput.equalsIgnoreCase("done")) {
                 addingMethod = false;
@@ -48,8 +47,7 @@ public class AppRecipeRepository implements RecipeRepository {
 
         System.out.println("Рецепт додано.");
     }
-
-    @Override
+        @Override
     public void deleteRecipe() {
         if (recipes.isEmpty()) {
             System.out.println("Немає доступних рецептів для видалення.");
@@ -75,7 +73,6 @@ public class AppRecipeRepository implements RecipeRepository {
             System.out.println("Рецепт з такою назвою не знайдено.");
         }
     }
-
     @Override
     public void editRecipe() {
         if (recipes.isEmpty()) {
@@ -117,7 +114,7 @@ public class AppRecipeRepository implements RecipeRepository {
             List<MethodOC> newMethod = recipeToEdit.getMethod();
             boolean editingMethod = true;
             while (editingMethod) {
-                System.out.println("Введіть новий метод приготування (FRIED, BOILED, FROZEN, BAKED, STEWED) або введіть 'done', щоб завершити:");
+                System.out.println("Введіть новий метод приготування (fry, boil, freeze, bake, stew),i введіть 'done':");
                 String newMethodInput = scanner.nextLine();
                 if (newMethodInput.equalsIgnoreCase("done")) {
                     editingMethod = false;
@@ -140,8 +137,6 @@ public class AppRecipeRepository implements RecipeRepository {
             System.out.println("Рецепт з такою назвою не знайдено.");
         }
     }
-
-
     @Override
     public void searchRecipe() {
         if (recipes.isEmpty()) {
@@ -169,16 +164,14 @@ public class AppRecipeRepository implements RecipeRepository {
             System.out.println("Рецепт з такою назвою не знайдено.");
         }
     }
-
     @Override
-    public void saveAndExit() {
+    public void save() {
         gsonConverter.writeJson(recipes, "C:\\java\\projectPr\\recipes.json");
         System.out.println("Рецепти збережено");
     }
-
     @Override
     public void exitWithoutSaving() {
-        System.out.println("Завершено");
+        System.out.println("Завершено...");
     }
 
 }
