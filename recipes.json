@@ -1,1 +1,182 @@
-[{"name":"Назва рецепту","ingredients":["Інгредієнт 1","Інгредієнт 2"],"method":["FRIED","BOILED"]}]
+  [
+    {
+      "name": "Baked Salmon",
+      "ingredients": [
+        "Salmon",
+        "Lemon",
+        "Olive oil",
+        "Garlic",
+        "Dill",
+        "Salt",
+        "Pepper"
+      ],
+      "method": [
+        "BAKED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=2uYoqclu6so"
+    },
+    {
+      "name": "Spaghetti Carbonara",
+      "ingredients": [
+        "Spaghetti",
+        "Bacon",
+        "Eggs",
+        "Parmesan cheese",
+        "Black pepper",
+        "Salt"
+      ],
+      "method": [
+        "BOILED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=egfdthlQjDM"
+    },
+    {
+      "name": "Chicken Stir-Fry",
+      "ingredients": [
+        "Chicken breast",
+        "Broccoli",
+        "Bell peppers",
+        "Carrots",
+        "Soy sauce",
+        "Ginger",
+        "Garlic",
+        "Cornstarch",
+        "Vegetable oil"
+      ],
+      "method": [
+        "FRIED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=l3tCH04GQ1o"
+    },
+    {
+      "name": "Roasted Vegetables",
+      "ingredients": [
+        "Potatoes",
+        "Carrots",
+        "Zucchini",
+        "Bell peppers",
+        "Onion",
+        "Olive oil",
+        "Salt",
+        "Pepper",
+        "Herbs"
+      ],
+      "method": [
+        "BAKED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=I9E--eXHGMI"
+    },
+    {
+      "name": "Beef Stew",
+      "ingredients": [
+        "Beef stew meat",
+        "Potatoes",
+        "Carrots",
+        "Onion",
+        "Garlic",
+        "Beef broth",
+        "Tomato paste",
+        "Flour",
+        "Herbs",
+        "Salt",
+        "Pepper"
+      ],
+      "method": [
+        "STEWED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=AmC9SmCBUj4"
+    },
+    {
+      "name": "Grilled Chicken",
+      "ingredients": [
+        "Chicken breasts",
+        "Olive oil",
+        "Lemon juice",
+        "Garlic",
+        "Paprika",
+        "Salt",
+        "Pepper"
+      ],
+      "method": [
+        "GRILLED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=AmO2wUfq3w8"
+    },
+    {
+      "name": "Shrimp Scampi",
+      "ingredients": [
+        "Shrimp",
+        "Garlic",
+        "Butter",
+        "White wine",
+        "Lemon juice",
+        "Parsley",
+        "Red pepper flakes",
+        "Salt",
+        "Pepper"
+      ],
+      "method": [
+        "SAUTEED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=AmO2wUfq3w8"
+    },
+    {
+      "name": "Homemade Pizza",
+      "ingredients": [
+        "Pizza dough",
+        "Tomato sauce",
+        "Mozzarella cheese",
+        "Pepperoni",
+        "Mushrooms",
+        "Bell peppers",
+        "Onion",
+        "Olive oil",
+        "Salt",
+        "Pepper",
+        "Herbs"
+      ],
+      "method": [
+        "BAKED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=1-SJGQb9oG0"
+    },
+    {
+      "name": "Vegetable Curry",
+      "ingredients": [
+        "Assorted vegetables",
+        "Coconut milk",
+        "Curry paste",
+        "Onion",
+        "Garlic",
+        "Ginger",
+        "Vegetable broth",
+        "Lime juice",
+        "Cilantro",
+        "Salt",
+        "Pepper"
+      ],
+      "method": [
+        "SIMMERED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=KT4vhl8slhE"
+    },
+    {
+      "name": "Chocolate Chip Cookies",
+      "ingredients": [
+        "Flour",
+        "Butter",
+        "Sugar",
+        "Brown sugar",
+        "Eggs",
+        "Vanilla extract",
+        "Baking soda",
+        "Salt",
+        "Chocolate chips",
+        "Nuts (optional)"
+      ],
+      "method": [
+        "BAKED"
+      ],
+      "guide": "https://www.youtube.com/watch?v=qflJcMfc7rg"
+    }
+  ]
