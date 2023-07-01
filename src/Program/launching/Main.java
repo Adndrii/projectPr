@@ -10,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String command;
 
-        do {
+        while (true) {
             System.out.println("Введіть команду (add, delete, edit, search, save, exit):");
             command = scanner.nextLine();
 
@@ -28,14 +28,16 @@ public class Main {
                     repository.searchRecipe();
                     break;
                 case "save":
-                    repository.save();
+                    repository.saveRecipe();
                     break;
                 case "exit":
                     repository.exitWithoutSaving();
+                    System.exit(0);
                     break;
                 default:
-                    System.out.println("Невідома команда. Спробуйте ще раз.");
+                    System.out.println("-");
             }
-        } while (!command.equals("exit"));
+
+        }
     }
 }

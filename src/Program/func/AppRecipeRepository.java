@@ -6,13 +6,20 @@ import Program.func.info.GsonConverter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 public class AppRecipeRepository implements RecipeRepository {
     private List<Recipe> recipes;
+    private final String filePath = "C:\\java\\projectPr\\recipes.json";
+
     private final GsonConverter gsonConverter;
     public AppRecipeRepository() {
         recipes = new ArrayList<>();
         gsonConverter = new GsonConverter();
+        loadRecipes();
     }
 
     @Override
@@ -161,17 +168,26 @@ public class AppRecipeRepository implements RecipeRepository {
         }
 
         if (!found) {
-            System.out.println("Рецепт з такою назвою не знайдено.");
+            System.out.println("Немає такого рецепта.");
         }
     }
     @Override
-    public void save() {
-        gsonConverter.writeJson(recipes, "C:\\java\\projectPr\\recipes.json");
+    public void saveRecipe() {
+        gsonConverter.writeJson(recipes, filePath);
         System.out.println("Рецепти збережено");
     }
     @Override
     public void exitWithoutSaving() {
         System.out.println("Завершено...");
     }
+    private void loadRecipes() {
+        try {
+            String json = new String(Files.readAllBytes(Paths.get(filePath)));
+            recipes = gsonConverter.fromJson(json);
+        } catch (IOException e) {
+            System.out.println("Помилка при читанні з файла: " + e.getMessage());
+        }
+    }
+
 
 }

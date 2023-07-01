@@ -5,7 +5,7 @@ public interface RecipeRepository {
     void deleteRecipe();
     void editRecipe();
     void searchRecipe();
-    void save();
+    void saveRecipe();
     void exitWithoutSaving();
 }
 
